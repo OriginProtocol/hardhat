@@ -51,7 +51,7 @@ async function main() {
   // We first accept this argument anywhere, so we know if the user wants
   // stack traces before really parsing the arguments.
   let showStackTraces = process.argv.includes("--show-stack-traces");
-
+  console.log("CUSTOM CODE PICKED UP!")
   try {
     const packageJson = await getPackageJson();
 
@@ -100,9 +100,9 @@ async function main() {
       return;
     }
 
-    if (!isHardhatInstalledLocallyOrLinked()) {
-      throw new HardhatError(ERRORS.GENERAL.NON_LOCAL_INSTALLATION);
-    }
+     if (!isHardhatInstalledLocallyOrLinked()) {
+       throw new HardhatError(ERRORS.GENERAL.NON_LOCAL_INSTALLATION);
+     }
 
     if (willRunWithTypescript(hardhatArguments.config)) {
       loadTsNode();
